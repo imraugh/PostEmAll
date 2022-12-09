@@ -1,6 +1,6 @@
 Type: Package
-Package: qualitema
-Title: Quality of life functions for EMA data
+Package: PostEmAll
+Title: Functions for post-hoc testing and data description for a variety of models
 Version: 0.0.1
 Author: Ian M. Raugh
 Maintainer: Ian M. Raugh <ian.raugh@gmail.com>
