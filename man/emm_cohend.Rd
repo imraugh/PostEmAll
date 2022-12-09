@@ -8,6 +8,7 @@ emm_cohend(
   model,
   formula,
   within,
+  standardize,
   level = 0.95,
   var = NULL,
   verbose = FALSE,

@@ -8,6 +8,7 @@ emm_oddratio(
   model,
   formula,
   level = 0.95,
+  standardize,
   return = c("print", "frame"),
   digits = 4,
   ...

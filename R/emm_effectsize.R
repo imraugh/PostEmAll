@@ -19,10 +19,34 @@
 #'
 #' @export
 emm_oddratio = function(
-  model, formula, level = .95,
+  model, formula, level = .95, standardize,
   return = c("print", "frame"), digits = 4,
   ...
 ){
+  if(!missing(standardize)){
+    data <- switch(
+      class(model),
+      "lm" = model$model,
+      "glm" = model$model,
+      "lme" = model$data,
+      "lmerTest" = model@frame,
+      "lmerModLmerTest" = model@frame,
+      "lme4" = model@frame,
+      "lmerMod" = model@frame,
+      "glmerMod" = model@frame,
+      "glmmTMB" = model$frame,
+      warning(class(model), " not supported! \n")
+    )
+
+    model <- update(
+      model,
+      data = standardize_frame(
+        data, ...
+      )
+    )
+
+  }
+
   #
   # This is significantly different from emm_cohend because emmeans
   #   provides the SE for the odds ratio, so all we need to do
@@ -79,7 +103,7 @@ emm_oddratio = function(
 #' @export
 emm_cohend = function(
     model, formula, within,
-    level = .95, var = NULL,
+    standardize, level = .95, var = NULL,
     verbose = FALSE, digits = 4,
     return = c("print", "frame"),
     at = NULL,
@@ -103,6 +127,16 @@ emm_cohend = function(
     "glmmTMB" = model$frame,
     warning(class(model), " not supported! \n")
   )
+
+  if(!missing(standardize)){
+    model <- update(
+      model,
+      data = standardize_frame(
+        data, ...
+      )
+    )
+
+  }
 
   if(!missing(within)){
     outcome <- switch(
