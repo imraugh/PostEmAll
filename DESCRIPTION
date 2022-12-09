@@ -1,12 +1,10 @@
 Type: Package
 Package: PostEmAll
-Title: Functions for post-hoc testing and data description for a variety of models
+Title: Flexible Post-Hoc Testing
 Version: 0.0.1
 Author: Ian M. Raugh
 Maintainer: Ian M. Raugh <ian.raugh@gmail.com>
-Description: A set of functions to improve quality of life for general
-    use.  Some of these are specific for EMA data but should hold general
-    use.
+Description: Functions for post-hoc testing and data description for a variety of models.
 License: MIT <https://cran.r-project.org/web/licenses/MIT>
 Encoding: UTF-8
 LazyData: true
